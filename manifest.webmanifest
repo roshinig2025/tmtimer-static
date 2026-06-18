@@ -1,0 +1,10 @@
+{
+  "name": "ADHD Focus Timer",
+  "short_name": "Focus Timer",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#d96b52",
+  "theme_color": "#d96b52",
+  "description": "A simple ADHD-friendly focus timer with presets and break cycles.",
+  "icons": []
+}
