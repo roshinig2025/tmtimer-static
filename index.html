@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.00, minimum-scale=1.00, maximum-scale=1.00"/>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-title" content="Speech Timer"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="description" content="Time your speeches at home with this easy to use online Toastmasters speech timer."/>
+  <title>Speech Timer for Toastmasters</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.6/plugins/CSSPlugin.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.6/TweenLite.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.6/easing/EasePack.min.js"></script>
+  <link href="styles.css" rel="stylesheet" type="text/css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&text=%C3%97i&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="wrapper">
+    <div class="sidebar" id="sidebar">
+      <div id="hideAway">
+        <div class="section" id="predefined">
+          <label class="option"><input type="radio" name="predefinedOption" value="custom" id="custom"/><span class="label">Custom Time</span></label>
+          <label class="option"><input type="radio" name="predefinedOption" value="tableTopics" id="tabletopics" checked/><span class="label">Table Topics&trade; (1-2 min)</span></label>
+          <label class="option"><input type="radio" name="predefinedOption" value="evaluation" id="evaluation"/><span class="label">Evaluation (2-3 min)</span></label>
+          <label class="option"><input type="radio" name="predefinedOption" value="speech" id="speech"/><span class="label">Speech (5-7 min)</span></label>
+          <label class="option"><input type="radio" name="predefinedOption" value="grace30s" id="grace30s"/><span class="label">30s Grace Period</span></label>
+        </div>
+
+        <div class="section" id="times">
+          <label class="option">Green light:
+            <input type="text" onkeypress="validateWatch(this)" onblur="validateThis(this)" id="customGreenLight" placeholder="mm:ss" value="1:00">
+            <span class="tooltip">Format: <code>mm:ss</code></span>
+          </label>
+          <label class="option">Yellow light:
+            <input type="text" onkeypress="validateWatch(this)" onblur="validateThis(this)" id="customYellowLight" placeholder="mm:ss" value="1:30">
+            <span class="tooltip">Format: <code>mm:ss</code></span>
+          </label>
+          <label class="option">Red light:
+            <input type="text" onkeypress="validateWatch(this)" onblur="validateThis(this)" id="customRedLight" placeholder="mm:ss" value="2:00">
+            <span class="tooltip">Format: <code>mm:ss</code></span>
+          </label>
+          <label class="option">Disqualification:
+            <input type="text" onkeypress="validateWatch(this)" onblur="validateThis(this)" id="customDq" placeholder="mm:ss" value="2:30">
+            <span class="tooltip">Format: <code>mm:ss</code></span>
+          </label>
+        </div>
+
+        <div class="section" id="settings">
+          <label class="option">
+            <input type="checkbox" id="showClock" checked/>
+            <span class="label">Show Clock</span>
+          </label>
+        </div>
+      </div>
+
+      <div id="controls">
+        <button class="section option" id="controlButton">Start</button>
+        <button class="section option" id="resetButton">Reset</button>
+      </div>
+    </div>
+
+    <div class="clockWrapper" id="clockWrapper">
+      <div class="clockInnerWrapper">
+        <span class="clock" id="clock">00:00</span>
+      </div>
+    </div>
+
+    <div class="grower" id="grower"></div>
+  </div>
+
+  <button id="infoButton">i</button>
+
+  <section id="info">
+    <div class="info__inner">
+      <h1>Toastmasters Speech Timer</h1>
+      <p>This is an unofficial timer for Toastmasters International format speeches.</p>
+      <h2>Usage</h2>
+      <p>Select the speech format, adjust the times if needed, and press Start. You can also use the spacebar.</p>
+      <h3>Offline Support</h3>
+      <p>This timer can work offline after it has been opened once in a compatible browser.</p>
+    </div>
+  </section>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-21273781-26');
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').catch(function(){});
+    }
+  </script>
+
+  <script src="app.js"></script>
+</body>
+</html>
